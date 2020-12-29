@@ -33,16 +33,50 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(),
+      body: Center(
+        child: ListView(
+        children: <Widget>[
+          Center(
+            child: Text("Menu for today"),
+          ),
+          Card(
+            child: ListTile(title: Text("Meat balls")),
+        ),
+          Card(
+            child: ListTile(title: Text("Arugula salad")),
+          )
+        ],
+      ),),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
-            DrawerHeader(child: Text("Menu")),
-            ListTile(title: Text("Week")),
-            ListTile(title: Text("Recipes")),
-            ListTile(title: Text("Shopping Card")),
-            ListTile(title: Text("Settings"))
+            DrawerHeader(
+              child: Text("Menu"),
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.calendar_today_outlined),
+              title: Text("Week"),
+              onTap: () {Navigator.pop(context);},
+            ),
+            ListTile(
+              leading: Icon(Icons.my_library_books_rounded),
+              title: Text("Recipes"),
+              onTap: () {Navigator.pop(context);},
+            ),
+            ListTile(
+              leading: Icon(Icons.shopping_cart_outlined),
+              title: Text("Shopping Cart"),
+              onTap: () {Navigator.pop(context);},
+            ),
+            ListTile(
+              leading: Icon(Icons.settings),
+              title: Text("Settings"),
+              onTap: () {Navigator.pop(context);},
+            )
           ],
         ),
       ),
