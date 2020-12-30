@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/recipes.dart';
+import 'package:flutter_app/settings.dart';
+import 'package:flutter_app/shopping_cart.dart';
+import 'package:flutter_app/weekly_menu.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -12,6 +17,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
+      routes: {
+        "/recipes": (context)=> RecipesScreen(),
+        "/settings" : (context)=> SettingsScreen(),
+        "/shopping_cart": (context)=> ShoppingCartScreen(),
+        "/weekly_menu" : (context)=> WeeklyMenuScreen()
+      },
       home: MyHomePage(title: _appTitle),
     );
   }
@@ -60,22 +71,28 @@ class _MyHomePageState extends State<MyHomePage> {
             ListTile(
               leading: Icon(Icons.calendar_today_outlined),
               title: Text("Week"),
-              onTap: () {Navigator.pop(context);},
+              onTap: () {Navigator.pushNamed(context, "/weekly_menu");},
             ),
             ListTile(
               leading: Icon(Icons.my_library_books_rounded),
               title: Text("Recipes"),
-              onTap: () {Navigator.pop(context);},
+              onTap: () {
+                Navigator.pushNamed(context, "/recipes");
+                },
             ),
             ListTile(
               leading: Icon(Icons.shopping_cart_outlined),
               title: Text("Shopping Cart"),
-              onTap: () {Navigator.pop(context);},
+              onTap: () {
+                Navigator.pushNamed(context, "/shopping_cart");
+                },
             ),
             ListTile(
               leading: Icon(Icons.settings),
               title: Text("Settings"),
-              onTap: () {Navigator.pop(context);},
+              onTap: () {
+                Navigator.pushNamed(context, "/settings");
+                },
             )
           ],
         ),
