@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/recipes.dart';
-import 'package:flutter_app/settings.dart';
-import 'package:flutter_app/shopping_cart.dart';
-import 'package:flutter_app/weekly_menu.dart';
+import 'package:flutter_app/screens/recipes.dart';
+import 'package:flutter_app/screens/settings.dart';
+import 'package:flutter_app/screens/shopping_cart.dart';
+import 'package:flutter_app/screens/weekly_menu.dart';
 
 
 void main() {
