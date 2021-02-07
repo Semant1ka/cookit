@@ -13,15 +13,18 @@ class ShoppingItem {
 class Ingredient {
   final String name;
   final String measure;
- // final List<String> tags;
+  final String category;
+  final List<String> tags;
 
-  Ingredient(this.name, this.measure);
+
+  Ingredient(this.name, this.measure, this.tags, this.category);
   
   factory Ingredient.fromJson(Map<String, dynamic> json){
     return Ingredient(
         json['name'] as String,
         json['measure'] as String,
-
+        List<String>.from(json['tags']),
+        json['category'] as String
     );
   }
 }
