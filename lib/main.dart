@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/screens/recipe.dart';
 import 'package:flutter_app/screens/recipes.dart';
 import 'package:flutter_app/screens/settings.dart';
 import 'package:flutter_app/screens/shopping_cart.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         "/recipes": (context)=> RecipesScreen(),
         "/settings" : (context)=> SettingsScreen(),
         "/shopping_cart": (context)=> ShoppingCartScreen(),
-        "/weekly_menu" : (context)=> WeeklyMenuScreen()
+        "/weekly_menu" : (context)=> WeeklyMenuScreen(),
       },
       home: MyHomePage(title: _appTitle),
     );
@@ -48,13 +49,42 @@ class _MyHomePageState extends State<MyHomePage> {
         child: ListView(
         children: <Widget>[
           Center(
-            child: Text("Menu for today"),
+            child: Text("Menu for today", style: Theme.of(context).textTheme.headline4),
           ),
           Card(
-            child: ListTile(title: Text("Meat balls")),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Image.asset('assets/images/meatballs.jpeg'),
+                ListTile(title: Text("Meatballs"),
+                  onTap: () {
+                  print("tap");
+                  var dialog = SimpleDialog(
+                       title: Text("Meatballs"),
+                       children: [SimpleDialogOption(child:Text("My recipe"))]
+                   );
+                  showDialog(context: context, builder: (BuildContext context) => dialog);
+                  },
+                ),
+              ],
+            ),
         ),
           Card(
-            child: ListTile(title: Text("Arugula salad")),
+            child: Column(
+              children: [
+                Image.asset('assets/images/arugula.jpg'),
+                ListTile(title: Text("Arugula salad"),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute<void>(
+                      builder: (BuildContext context) => RecipeScreen(),
+                  fullscreenDialog: true,
+                  ));
+
+          }),
+              ],
+            ),
           )
         ],
       ),),
